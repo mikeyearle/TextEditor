@@ -16,4 +16,5 @@ app.get('/', function(req, res) {
 
 // listen on port 8000 (for localhost) or the port defined for heroku
 var port = process.env.PORT || 8000;
+console.log("Listening on port " + port);
 app.listen(port);
