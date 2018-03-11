@@ -1,5 +1,3 @@
-// server.js
-
 var express = require('express');
 var app = express();
 
@@ -8,6 +6,10 @@ app.set('view engine', 'ejs');
 
 // public folder to store assets
 app.use(express.static(__dirname + '/public'));
+
+// static routing for modules
+app.use('/bootstrap', express.static(__dirname + '/node_modules/bootstrap/dist/css/bootstrap.min.css'));
+app.use('/marked', express.static(__dirname + '/node_modules/marked/marked.min.js'));
 
 // routes for app
 app.get('/', function(req, res) {
