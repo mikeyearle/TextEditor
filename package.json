@@ -6,6 +6,9 @@
   "repository": "https://github.com/mikeyearle/TextEditor.git",
   "author": "quickbell <15595869@students.lincoln.ac.uk>",
   "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  }
   "dependencies": {
     "bootstrap": "^4.0.0",
     "ejs": "^2.5.7",
