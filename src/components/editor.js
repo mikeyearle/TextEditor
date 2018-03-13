@@ -1,19 +1,38 @@
 import React from 'react';
+import MonacoEditor from 'react-monaco-editor';
 
 export default class Preview extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+            code: '# test'
+        };
 
-        this.handleChange = this.handleChange.bind(this);
+        this.editorDidMount = this.editorDidMount.bind(this);
+        this.onChange = this.onChange.bind(this);
     }
 
-    handleChange(event) {
-        var markdown = event.target.value;
+    editorDidMount(editor, monaco) {
+        editor.focus();
+    }
+
+    onChange(value) {
+        var markdown = value;
         this.props.onChange(markdown);
+        this.setState({
+            value: value
+        });
     }
 
     render() {
-        return <textarea className="Editor" onChange={this.handleChange} />
+        return (
+            <MonacoEditor
+                language="markdown"
+                theme="vs-dark"
+                value={this.state.code}
+                onChange={this.onChange}
+                editorDidMount={this.editorDidMount}
+            />
+        )
     }
 }

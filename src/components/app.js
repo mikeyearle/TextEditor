@@ -8,7 +8,12 @@ export default class App extends React.Component {
         super(props);
         this.state = { markdown: '' };
 
+        this.handleResize = this.handleResize.bind(this);
         this.markdownChanged = this.markdownChanged.bind(this);
+    }
+
+    handleResize() {
+        
     }
 
     markdownChanged(markdown) {
@@ -19,7 +24,7 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <SplitPane split="vertical" minSize={50} defaultSize={100}>
+            <SplitPane split="vertical" onChange={this.handleResize}>
                 <Editor onChange={this.markdownChanged} />
                 <Preview markdown={this.state.markdown} />
             </SplitPane>

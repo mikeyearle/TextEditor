@@ -1,11 +1,3 @@
-.Editor {
-    height: 100%;
-    width: 100%;
-    background-color: #333;
-    color: #fff;
-    font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
 .Resizer {
     background: #000;
     opacity: .2;
