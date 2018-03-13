@@ -6,14 +6,16 @@ import Preview from './preview'
 export default class App extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { markdown: '' };
+        this.state = {
+            markdown: ''
+        };
 
         this.handleResize = this.handleResize.bind(this);
         this.markdownChanged = this.markdownChanged.bind(this);
     }
 
-    handleResize() {
-        
+    handleResize(width) {
+        this.monaco.editor.layout();
     }
 
     markdownChanged(markdown) {
@@ -24,8 +26,8 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <SplitPane split="vertical" onChange={this.handleResize}>
-                <Editor onChange={this.markdownChanged} />
+            <SplitPane split="vertical" defaultSize={200} onChange={this.handleResize}>
+                <Editor monacoRef={(monaco) => { this.monaco = monaco; }} onChange={this.markdownChanged} />
                 <Preview markdown={this.state.markdown} />
             </SplitPane>
         )

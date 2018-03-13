@@ -5,7 +5,7 @@ export default class Preview extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            code: '# test'
+            code: ''
         };
 
         this.editorDidMount = this.editorDidMount.bind(this);
@@ -14,13 +14,13 @@ export default class Preview extends React.Component {
 
     editorDidMount(editor, monaco) {
         editor.focus();
+        editor.layout();
     }
 
     onChange(value) {
-        var markdown = value;
-        this.props.onChange(markdown);
+        this.props.onChange(value);
         this.setState({
-            value: value
+            code: value
         });
     }
 
@@ -29,9 +29,17 @@ export default class Preview extends React.Component {
             <MonacoEditor
                 language="markdown"
                 theme="vs-dark"
+                ref={this.props.monacoRef}
                 value={this.state.code}
                 onChange={this.onChange}
                 editorDidMount={this.editorDidMount}
+                requireConfig={{
+                    url: './vs/loader.js',
+                    baseUrl: '.',
+                    paths: {
+                        vs: 'vs'
+                    }
+                }}
             />
         )
     }
