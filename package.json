@@ -7,12 +7,20 @@
   "author": "quickbell <15595869@students.lincoln.ac.uk>",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js"
+    "dev": "electron-webpack dev"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0",
-    "ejs": "^2.5.7",
     "express": "^4.16.2",
-    "marked": "^0.3.17"
+    "github-markdown-css": "^2.10.0",
+    "marked": "^0.3.17",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-split-pane": "^0.1.77"
+  },
+  "devDependencies": {
+    "babel-preset-react": "^6.24.1",
+    "electron": "^1.8.3",
+    "electron-webpack": "^1.13.0",
+    "webpack": "3.11.0"
   }
 }
